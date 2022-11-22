@@ -11,19 +11,19 @@ class Kruh : public Tvar
         virtual bool leziUvnitr(double xb, double yb) const;
 
         virtual double x_min() const{
-            return x-r;
+            return -r;
             };
 
         virtual double x_max() const{
-            return x+r;
+            return r;
             };
 
         virtual double y_min() const{
-            return y-r;
+            return -r;
             };
 
         virtual double y_max() const{
-            return y+r;
+            return r;
             };
         };
 #endif

@@ -10,7 +10,7 @@ int main()
     std::cout << "Vyberte druh utvaru (1 - kruh): " << std::endl;
     std::cin >> utvar_id;
 
-    if (utvar_id == 1) {s
+    if (utvar_id == 1) {
         utvar = std::make_shared<Kruh>(1.0,0.0,0.0);
     }
 
