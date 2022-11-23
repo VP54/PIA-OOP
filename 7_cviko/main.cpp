@@ -22,11 +22,9 @@ std::string should_continue(){
         return "false";
     }
     else {
-        //std::cout << "Nezadal jsi ani Y/N prosim zadej spravne :) ";
         return "invalid";
     }
 }
-
 
 int main(){
     std::string temp_jmeno, temp_prijmeni, temp_vzdelani;
@@ -35,14 +33,15 @@ int main(){
     std::string should_cont = "true";
 
     std::vector<tuple <std::string, std::string, int, double, std::string>> person;
+    Clovek c;
 
-   while(should_cont == "true"){
+    while(should_cont == "true"){
 
-        temp_jmeno = zadej_jmeno();
-        temp_vek = zadej_vek();
-        temp_prijmeni = zadej_prijmeni();
-        temp_vyska = zadej_vysku();
-        temp_vzdelani = zadej_vzdelani();
+        temp_jmeno = c.zadej_jmeno();
+        temp_prijmeni = c.zadej_prijmeni();
+        temp_vek = c.zadej_vek();
+        temp_vyska = c.zadej_vysku();
+        temp_vzdelani = c.zadej_vzdelani();
 
         person.push_back(make_tuple(temp_prijmeni, temp_jmeno, temp_vek, temp_vyska, temp_vzdelani));
 
@@ -56,6 +55,6 @@ int main(){
 
     std::sort(person.begin(), person.end());
 
-    vypis_info(person);
-    zapis_do_souboru(person);
+    c.vypis_info(person);
+    c.zapis_do_souboru(person);
 };

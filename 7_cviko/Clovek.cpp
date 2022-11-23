@@ -11,8 +11,9 @@
 
 //using namespace std;
 
-
-bool zkontroluj_vysku(double vyska){
+Clovek::Clovek(){
+}
+bool Clovek::zkontroluj_vysku(double vyska){
 
     if((vyska > 0.0) && (vyska < 250.0)){
         std::cout << "Vyska sedi \n";
@@ -26,7 +27,7 @@ bool zkontroluj_vysku(double vyska){
     }
 }
 
-double zadej_vysku(){
+double Clovek::zadej_vysku(){
     double vyska;
 
     std::cout << "Zadej Vysku: \t \n";
@@ -43,7 +44,7 @@ double zadej_vysku(){
 }
 
 
-bool check_vek(int age){
+bool Clovek::check_vek(int age){
     if((age > 0) && (age < 250)){
         std::cout << "Vek sedi \n";
         std::cout << "\n";
@@ -54,28 +55,29 @@ bool check_vek(int age){
         std::cout << "\n";
         return false;
     }
-
 }
 
-int zadej_vek(){
+int Clovek::zadej_vek(){
     int temp_vek;
+    bool spravny_input;
 
     std::cout << "Zadej vek: \t \n";
     std::cin >> temp_vek;
     std::cout << "\n";
 
     while(check_vek(temp_vek) != true){
+        std::cout << "\n";
         std:cout << "Zadej prosim vek ve tvaru celeho cisla bez desetinne carky: \t\t \n"; 
         std::cin.clear();
-        std::cin.ignore();
+        std::cin.ignore(numeric_limits<streamsize>::max());
         std::cin >> temp_vek;
-        std::cout << "\n";
+        //std::cout << "\n";
     }
     return temp_vek;
 }
 
 
-std::string zadej_jmeno(){
+std::string Clovek::zadej_jmeno(){
     std::string name;
 
     std::cout << "zadej jmeno \n";
@@ -87,7 +89,7 @@ std::string zadej_jmeno(){
 }
 
 
-std::string string_to_lower(std::string to_transform){
+std::string Clovek::string_to_lower(std::string to_transform){
 
     for (int i = 0; i< to_transform.length(); i++){
         to_transform[i] = tolower(to_transform[i]);
@@ -95,7 +97,7 @@ std::string string_to_lower(std::string to_transform){
     return to_transform;
 }
 
-std::string zadej_prijmeni(){
+std::string Clovek::zadej_prijmeni(){
     std::string prijmeni;
 
     std::cout << "zadej prijmeni \n";
@@ -107,7 +109,7 @@ std::string zadej_prijmeni(){
     
 }
 
-std::string map_vzdelani(int id_vzdelani){
+std::string Clovek::map_vzdelani(int id_vzdelani){
     std::string vzdelani;
 
     if(id_vzdelani == 1){
@@ -125,7 +127,7 @@ std::string map_vzdelani(int id_vzdelani){
     }
 }
 
-std::string zadej_vzdelani(){
+std::string Clovek::zadej_vzdelani(){
     int id_vzdelani;
     std::string vzdelani;
 
@@ -165,7 +167,7 @@ std::string zadej_vzdelani(){
     
 }
 
-void vypis_info(std::vector<tuple <std::string, std::string, int, double, std::string>> person){
+void Clovek::vypis_info(std::vector<tuple <std::string, std::string, int, double, std::string>> person){
     std::cout << "zacnu iterovat" << person.size() << "\n";
     for(int i = 0; i <= person.size(); i++){
         std::cout << "Jmeno: \t\t" << get<1>(person[i]) << "\t";
@@ -176,22 +178,24 @@ void vypis_info(std::vector<tuple <std::string, std::string, int, double, std::s
     }
 }
 
-void zapis_do_souboru(std::vector<tuple <std::string, std::string, int, double, std::string>> person){
+void Clovek::zapis_do_souboru(std::vector<tuple <std::string, std::string, int, double, std::string>> person){
     std::ofstream zapis;
-    zapis.open("aaa.txt");
+    zapis.open("hw_ouput.txt");
 
     for(int i = 0; i <= person.size(); i++){
 
         zapis << std::get<1>(person[i]);
-        zapis << "\t\t";
+        zapis << ";";
         zapis << std::get<0>(person[i]);
-        zapis << "\t\t";
+        zapis << ";";
         zapis << std::get<4>(person[i]);
-        zapis << "\t\t";
+        zapis << ";";
         zapis << std::get<2>(person[i]);
-        zapis << "\t\t";
+        zapis << ";";
         zapis << std::get<3>(person[i]);
-        zapis << "\n";
+        zapis << ";";
     }
     zapis.close();
 }
+
+
