@@ -1,1 +1,1 @@
-Vasek;pazderka;SS;15;155.5;
+Vasek;pazderka;SS;12;133;
